@@ -1,6 +1,6 @@
 package com.hamza.z2h.builder_pattern.builder;
 
-public class LunchOrderBean {
+public class LunchOrder {
     private String bread;
     private String condiments;
     private String dressing;
@@ -14,8 +14,8 @@ public class LunchOrderBean {
 
         public Builder() {
         }
-        public lunchOrder(){
-            
+        public LunchOrder build(){
+            return new LunchOrder(this);
         }
 
         public Builder bread(String bread){
@@ -36,8 +36,6 @@ public class LunchOrderBean {
         }
     }
 
-
-
     public String getBread() {
         return bread;
     }
@@ -52,5 +50,22 @@ public class LunchOrderBean {
 
     public String getMeat() {
         return meat;
+    }
+
+    private LunchOrder(Builder builder) {
+        this.bread = builder.bread;
+        this.condiments = builder.condiments;
+        this.dressing = builder.dressing;
+        this.meat = builder.meat;
+    }
+
+    @Override
+    public String toString() {
+        return "LunchOrder{" +
+                "bread='" + bread + '\'' +
+                ", condiments='" + condiments + '\'' +
+                ", dressing='" + dressing + '\'' +
+                ", meat='" + meat + '\'' +
+                '}';
     }
 }
